@@ -11,7 +11,8 @@ class SearchController {
 
         const data = await searchService.searchNews(keyword);
 
-        return res.json({
+        return res.status(data.code?data.code:200).json({
+            status: data.code?data.code:200,
             data
         });
 

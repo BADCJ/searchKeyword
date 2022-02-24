@@ -22,7 +22,8 @@ class SearchService{
             let { response } = e;
             let { data } = response;
             let { status , code , message } = data;
-            throw new CheckedException(code,message,status);
+            console.log(data);
+            throw new CheckedException(message,code,400);
         }
 
     }
@@ -58,13 +59,14 @@ class SearchService{
         }
         catch ( e ) {
             
-            const { code , err , msg } = e;
+            const { code , status , message } = e;
 
-            logService.localModelogError(`code = [${code}] , err = [${err}] , msg = [${msg}]`);
+            console.log(e);
 
-            return {
-                ...e
-            }
+            logService.localModelogError(`code = [${code}] , status = [${status}] , msg = [${message}]`);
+
+            return new CheckedException(message,status,code);
+
         }
 
     }
