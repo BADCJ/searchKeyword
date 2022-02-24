@@ -8,7 +8,7 @@ class SearchService{
 
     async callNewsApi (keyword) {
 
-        logService.localModelogInfo(`Searching news api for keyword ${keyword}`);
+        logService.localModelogInfo(`Searching news api for keyword =>`,keyword);
 
         try{
             const result = await axios.get(`https://newsapi.org/v2/everything?q=${keyword}&from=2022-01-24&sortBy=publishedAt&apiKey=${newsApi.apiKey}`);
