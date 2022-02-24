@@ -22,6 +22,8 @@ class SearchService{
 
         try{
 
+            console.log();
+
             // ? search in history first
             let history = await searchHistoryDao.findOne({keyword});
 

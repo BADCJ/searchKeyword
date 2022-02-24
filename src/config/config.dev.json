@@ -5,6 +5,7 @@
         "mongodb":{
             "client": "mongodb",
             "host": "localhost",
+            "port":"27017",
             "db_name": "IdeaUsherTask"
         }
     },

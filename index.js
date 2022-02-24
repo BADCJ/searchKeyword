@@ -12,6 +12,8 @@ const app = express();
 
 const routes = require('./src/routes');
 
+const logService = require('./src/services/loggerService')
+
 
 
 app.use(express.json());
@@ -23,12 +25,9 @@ app.use('/app/v1',routes);
 
 app.listen( port , async() => {
 
+    // ? connect the required databases
     await DBCONNECTIONS.connectToDb();
 
-    console.log(`Listen server on http://0.0.0.0:${port}`);
+    logService.logInfo(`Listen server on http://0.0.0.0:${port}`);
 
 });
-
-
-// api key = adb22ea254644bd29761e3a22e486076
-// https://newsapi.org/v2/everything?q=tesla&from=2022-01-24&sortBy=publishedAt&apiKey=API_KEY
