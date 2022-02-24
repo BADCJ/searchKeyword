@@ -1,0 +1,14 @@
+{
+    "environment":"dev",
+    "port":9998,
+    "databases":{
+        "mongodb":{
+            "client": "mongodb",
+            "host": "localhost",
+            "db_name": "IdeaUsherTask"
+        }
+    },
+    "newsApi":{
+        "apiKey":"adb22ea254644bd29761e3a22e486076"
+    }
+}

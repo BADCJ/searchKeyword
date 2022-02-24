@@ -1,0 +1,19 @@
+{
+  "name": "idea_usher_task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "set NODE_ENV=test && node index.js",
+    "local": "set NODE_ENV=local && nodemon index.js"
+  },
+  "keywords": [],
+  "author": "BADCJ",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.3",
+    "morgan": "^1.10.0"
+  }
+}
