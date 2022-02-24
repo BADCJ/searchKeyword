@@ -2,13 +2,15 @@
 const axios = require('axios');
 const { newsApi } = require('../config');
 const searchHistoryDao = require('../dao/searchHistory.dao');
-const logService = require('./loggerService')
+const logService = require('./loggerService');
+const CheckedException = require('../exceptions/checked.exception')
 
 class SearchService{
 
     async callNewsApi (keyword) {
 
         logService.localModelogInfo(`Searching news api for keyword =>`,keyword);
+        logService.localModelogInfo(`using api key`,newsApi.apiKey);
 
         try{
             const result = await axios.get(`https://newsapi.org/v2/everything?q=${keyword}&from=2022-01-24&sortBy=publishedAt&apiKey=${newsApi.apiKey}`);
@@ -17,7 +19,10 @@ class SearchService{
             return { ...data , keyword }
         }
         catch(e){
-            throw new Error(e)
+            let { response } = e;
+            let { data } = response;
+            let { status , code , message } = data;
+            throw new CheckedException(code,message,status);
         }
 
     }
@@ -52,7 +57,14 @@ class SearchService{
 
         }
         catch ( e ) {
-            throw new Error(e);
+            
+            const { code , err , msg } = e;
+
+            logService.localModelogError(`code = [${code}] , err = [${err}] , msg = [${msg}]`);
+
+            return {
+                ...e
+            }
         }
 
     }
