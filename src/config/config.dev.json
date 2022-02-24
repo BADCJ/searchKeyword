@@ -1,5 +1,6 @@
 {
     "environment":"dev",
+    "version":1,
     "port":9998,
     "databases":{
         "mongodb":{
