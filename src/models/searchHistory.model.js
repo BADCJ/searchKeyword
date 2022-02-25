@@ -16,7 +16,7 @@ const articlesSchema = new Schema({
     publishedAt : { type : String },
     content : { type : String }
 
-})
+},{_id:false})
 
 const searchHistorySchema = new Schema({
 
